@@ -6,16 +6,19 @@ import {
   CardImgOverlay,
   CardText,
   CardBody,
-  CardTitle
-} from "reactstrap";
+  CardTitle,
+BreadcrumbItem,Breadcrumb} from "reactstrap";
+ 
+  import { Link } from 'react-router-dom';
+ 
 
 class dishDetails extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      dish: this.props.selectedDish
-    };
+    //this.state = {
+     // dish: this.props.selectedDish
+   // };
   }
 
   showImageAndName(dish) {
@@ -32,16 +35,16 @@ class dishDetails extends Component {
     else return <div></div>;
   }
 
-  showComments(dish) {
-    var i;
-    if (dish != null) {
-      return <div>{}</div>;
-    } else {
-      return <div></div>;
-    }
-  }
+  //showComments(dish) {
+  //  var i;
+   // if (dish != null) {
+   //   return <div>{}</div>;
+    //} else {
+    //  return <div></div>;
+   // }
+ // }
   render() {
-    const comm = this.props.selectedDish.comments.map(dish => {
+    const comm = this.props.comments.map(dish => {
       return (
         <div>
           <h4>{dish.comment}</h4>
@@ -57,15 +60,37 @@ class dishDetails extends Component {
       );
     });
     return (
+      <div className="container">
+        
+        <div className="row">
+        <Breadcrumb>
+
+             <BreadcrumbItem>
+
+          
+         <Link to = '/menu'>Menu</Link>
+
+                 </BreadcrumbItem>
+
+          <BreadcrumbItem active>{this.props.dish.name}</BreadcrumbItem>
+        </Breadcrumb>
+        <div className="col-12">
+          <h3>{this.props.dish.name}</h3>
+          <hr/>
+          
+        </div>
+      </div>
       <div className="row">
-        <div className="col-12 col-md-5 m-1">
-          {this.showImageAndName(this.state.dish)}
+      <div className="col-12 col-md-5 m-1">
+          {this.showImageAndName(this.props.dish)}
         </div>
         <div className="col-12 col-md-5 m-1">
           <h3>COMMENTS</h3>
           <Media list>{comm}</Media>
         </div>
-      </div>
+        </div>
+        </div>
+    
     );
   }
 }
