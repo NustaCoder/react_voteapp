@@ -4,7 +4,7 @@ export const DISHES =
         id: 0,
         name:'Pasta',
         image: '/assets/images/pasta.jpg',
-        category: 'mains',
+        category: 'appetizer',
         label:'Hot',
         price:'4.99',
         featured: true,
@@ -14,7 +14,7 @@ export const DISHES =
         id: 1,
         name:'Lasagna',
         image: '/assets/images/lasagna.jpg',
-        category: 'appetizer',
+        category: 'Main',
         label:'',
         price:'1.99',
         featured: false,
@@ -24,7 +24,7 @@ export const DISHES =
         id: 2,
         name:'Paneer',
         image: '/assets/images/Paneer.jpg',
-        category: 'appetizer',
+        category: 'lunch',
         label:'New',
         price:'1.99',
         featured: false,
@@ -39,5 +39,28 @@ export const DISHES =
         price:'2.99',
         featured: false,
         description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
-        }
+        },
+        {
+
+         id: 4,
+        name:'gujarati thali',
+        image: '/assets/images/gt.jpg',
+        category: 'lunch',
+        label:'',
+        price:'2.99',
+        featured: false,
+        description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
+        },
+        {
+
+            id: 4,
+           name:'egg dish',
+           image: '/assets/images/egg.jpg',
+           category: 'breakfast',
+           label:'',
+           price:'2.99',
+           featured: false,
+           description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
+           }
     ];
+

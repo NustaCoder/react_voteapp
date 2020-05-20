@@ -12,7 +12,7 @@ BreadcrumbItem,Breadcrumb} from "reactstrap";
   import { Link } from 'react-router-dom';
  
 
-class dishDetails extends Component {
+class DishDetails extends Component {
   constructor(props) {
     super(props);
 
@@ -95,4 +95,4 @@ class dishDetails extends Component {
   }
 }
 
-export default dishDetails;
+export default DishDetails;
