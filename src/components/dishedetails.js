@@ -73,7 +73,7 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
   }
 
   render() {
-    const postComment = this.props.postComment;
+    
     const comm = this.props.comments.map(dish => {
       
       return (
@@ -130,7 +130,7 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
               <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
               <ModalBody>
           
-              <LocalForm onSubmit={(values)=>this.handleSubmit(values, this.props.dish.id, postComment)}>
+              <LocalForm onSubmit={(values)=>this.handleSubmit(values, this.props.dish.id, addComment)}>
   <Label htmlFor="option"><strong>Rating</strong></Label>
                     <Control.select model=".rating" name="rating"
                       className="form-control">

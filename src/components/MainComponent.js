@@ -6,7 +6,7 @@ import Footer from "./FooterComponent";
 import About from "./AboutComponent";
 import Contact from "./ContactComponent";
 import {Switch,  Route, Redirect, withRouter } from 'react-router-dom';
-import { postComment} from '../redux/ActionCreators';
+import { addComment} from '../redux/ActionCreators';
 
 import { connect} from 'react-redux';
 import CommentForm from "./dishedetails";
@@ -20,8 +20,8 @@ const mapStateToProps = state => {
       leaders:state.leaders
     }
 }
-const mapDispatchTOProps = (dispatch)=>({
-postComment: (dishId,rating, author, comment)=> dispatch(postComment(dishId,rating, author, comment))
+const mapDispatchToProps = (dispatch)=>({
+addComment: (dishId,rating, author, comment)=> dispatch(addComment(dishId,rating, author, comment))
 })
 
 
@@ -66,7 +66,7 @@ class Main extends Component {
       <CommentForm dish={this.props.dishes.filter((dish)=> dish.id === parseInt(match.params.dishId,10))[0]}
       
             comments={this.props.comments.filter((comments) => comments.dishId === parseInt(match.params.dishId,10))}
-postComment={this.props.postComment}
+addComment={this.props.addComment}
       />
     );
 
@@ -98,4 +98,4 @@ postComment={this.props.postComment}
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchTOProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
