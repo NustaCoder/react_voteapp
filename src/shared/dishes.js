@@ -53,7 +53,7 @@ export const DISHES =
         },
         {
 
-            id: 4,
+            id: 5,
            name:'egg dish',
            image: '/assets/images/egg.jpg',
            category: 'breakfast',

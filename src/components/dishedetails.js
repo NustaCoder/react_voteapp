@@ -7,8 +7,9 @@ import {
   CardBody,
   CardTitle,
 BreadcrumbItem,Breadcrumb,Row,Col, Button,Label,Modal, ModalBody, ModalHeader} from "reactstrap";
-import { Control, LocalForm, Errors} from 'react-redux-form';
+import { Control, LocalForm, Errors, isValid} from 'react-redux-form';
 import { Link } from 'react-router-dom';
+import { Loading} from './LoadingComponent';
 
 
 
@@ -48,10 +49,10 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
 }
 
  
-    handleSubmit(values, dishId, postComment) {
+    handleSubmit(values, dishId, addComment) {
     
     this.toggleModal();
-    postComment(dishId, values.rating, values.author, values.comment);
+    addComment(dishId, values.rating, values.author, values.comment);
   }
   
 
@@ -59,7 +60,28 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
 
 
   showImageAndName(dish) {
-    if (dish != null)
+    if(dish.isLoading) {
+      return(
+        <div className="container">
+          <div className="row">
+            <Loading />
+          </div>
+        
+        </div>
+      )
+    }
+    else if (dish.errMess) {
+      return(
+      <div className="container">
+          <div className="row">
+            <h4>{dish.errMess}</h4>
+          </div>
+        
+        </div>
+      )
+    }
+    
+    (dish != null) 
       return (
         <Card>
           <CardImg top src={dish.image} alt={dish.name} />
@@ -69,11 +91,11 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
           </CardBody>
         </Card>
       );
-    else return <div></div>;
+      
   }
 
   render() {
-    
+    const addComment= this.props.addComment;
     const comm = this.props.comments.map(dish => {
       
       return (
@@ -93,6 +115,11 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
 
       );
     });
+    
+     
+
+    
+   
     return (
       <div className="container">
         

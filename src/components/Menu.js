@@ -9,6 +9,8 @@ import {
   Breadcrumb,
   BreadcrumbItem}  from "reactstrap";
 import {Link } from 'react-router-dom';
+import {Loading} from './LoadingComponent';
+
 
 function RenderMenu({ dish, onClick }) {
   return (
@@ -29,10 +31,31 @@ function RenderMenu({ dish, onClick }) {
 }
 
 function Menu(props) {
-  const menu = props.dishes.map(dish => {
+  const menu = props.dishes.dishes.map(dish => {
     return <RenderMenu dish={dish}/> //onClick={props.onClick} />;
   });
-
+  if(props.dishes.isLoading) {
+    return(
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      
+      </div>
+    )
+  }
+  else if (props.dishes.errMess) {
+    return(
+    <div className="container">
+        <div className="row">
+          <h4>{props.dishes.errMess}</h4>
+        </div>
+      
+      </div>
+    )
+  }
+else
+  
   return (
     <div className="container">
       <div className="row">
