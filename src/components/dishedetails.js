@@ -6,10 +6,11 @@ import {
   CardText,
   CardBody,
   CardTitle,
-BreadcrumbItem,Breadcrumb,Row,Col, Button,Label,Modal, ModalBody, ModalHeader} from "reactstrap";
-import { Control, LocalForm, Errors, isValid} from 'react-redux-form';
+BreadcrumbItem,Breadcrumb,Row, Button,Label,Modal, ModalBody, ModalHeader} from "reactstrap";
+import { Control, LocalForm, Errors} from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading} from './LoadingComponent';
+import { baseUrl} from '../shared/baseUrl';
 
 
 
@@ -60,31 +61,10 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
 
 
   showImageAndName(dish) {
-    if(dish.isLoading) {
-      return(
-        <div className="container">
-          <div className="row">
-            <Loading />
-          </div>
-        
-        </div>
-      )
-    }
-    else if (dish.errMess) {
-      return(
-      <div className="container">
-          <div className="row">
-            <h4>{dish.errMess}</h4>
-          </div>
-        
-        </div>
-      )
-    }
-    
-    (dish != null) 
+   if(dish!=null)
       return (
         <Card>
-          <CardImg top src={dish.image} alt={dish.name} />
+          <CardImg top src={baseUrl + dish.image} alt={dish.name} />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>
@@ -115,9 +95,29 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
 
       );
     });
-    
-     
 
+    if(this.props.isLoading) {
+      return(
+        <div className="container">
+          <div className="row">
+            <Loading />
+          </div>
+        
+        </div>
+      )
+    }
+    else if (this.props.errMess) {
+      return(
+      <div className="container">
+          <div className="row">
+            <h4>{this.props.errMess}</h4>
+          </div>
+        
+        </div>
+      )
+    }
+    
+    else
     
    
     return (
