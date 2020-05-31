@@ -5,7 +5,7 @@ import { Breadcrumb, BreadcrumbItem, Card,
     
     CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import { baseUrl} from '../shared/baseUrl';
 function About(props) {
 
 function RenderLeaders() {
@@ -20,7 +20,7 @@ function RenderLeaders() {
                
             
   
-          <CardImg width="100%" src={leader.image} alt={leader.name} />
+          <CardImg width="100%" src={baseUrl + leader.image} alt={leader.name} />
         
         
         </Card>

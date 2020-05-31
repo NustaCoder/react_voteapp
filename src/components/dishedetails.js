@@ -11,7 +11,7 @@ import { Control, LocalForm, Errors} from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading} from './LoadingComponent';
 import { baseUrl} from '../shared/baseUrl';
-
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 
@@ -63,13 +63,19 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
   showImageAndName(dish) {
    if(dish!=null)
       return (
-        <Card>
+       
+           <FadeTransform in 
+        transformProps = {{
+            exitTransform: 'scale(0.5) translateY(-50%)'
+        }}>
+           <Card>
           <CardImg top src={baseUrl + dish.image} alt={dish.name} />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>
           </CardBody>
         </Card>
+        </FadeTransform>
       );
       
   }
@@ -79,7 +85,10 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
     const comm = this.props.comments.map(dish => {
       
       return (
+        
+
         <div>
+          
           <h4>{dish.comment}</h4>
           <p>
             --{dish.author},{" "}
@@ -92,7 +101,7 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
           
         </div>
 
-
+          
       );
     });
 
@@ -147,10 +156,12 @@ const minLength =(len) => (val) => (val) && (val.length >= len);
           {this.showImageAndName(this.props.dish)}
         </div>
         <div className="col-12 col-md-5 m-1">
-        
-
+        <Stagger in>
+        <Fade in>
           <h3>COMMENTS</h3>
           <Media list>{comm}</Media>
+       </Fade>
+       </Stagger>
        
           <Button outline onClick={this.toggleModal} ><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

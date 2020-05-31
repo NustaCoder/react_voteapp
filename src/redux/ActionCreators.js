@@ -169,3 +169,46 @@ export const addPromos = (promos) => ({
     payload: promos
 //fetchDishes=thunk  & dishesLoading all 3 are action creators
 })
+
+
+export const fetchLeaders = () => (dispatch) => {
+    dispatch(leadersLoading(true))
+
+   return fetch(baseUrl + 'leaders')
+   .then(response => {
+    if(response.ok) {
+        return response;
+
+    }
+    else {
+        var error= new Error('Error' +response.status + ':' +response.statusText)
+       error.response = response;
+       throw error;
+     }
+},  
+error => {
+    var errmess = new Error(error.message);
+    throw errmess;
+
+}
+)
+
+.then(response => response.json())
+
+.catch(error => dispatch(leadersFailed(error.message)))
+}
+
+export const leadersLoading = () => ({  
+    type: ActionTypes.LEADER_LOADING
+})
+
+export const leadersFailed = (errmess) => ({
+    type: ActionTypes.LEADER_FAILED,
+    payload:errmess
+})
+
+export const addLeader = (leaders) => ({
+    type: ActionTypes.ADD_LEADER,
+    payload: leaders
+
+})
