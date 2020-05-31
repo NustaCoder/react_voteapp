@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardImg, CardBody, CardText, CardTitle, CardSubtitle } from 'reactstrap';
 import { Loading } from './LoadingComponent';
-import { baseUrl} from '../shared/baseUrl';
+import { baseUrl } from '../shared/baseUrl';
 
 function RenderCard({items, isLoading, errMess})  {
     if(isLoading) {

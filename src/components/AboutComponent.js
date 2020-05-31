@@ -1,9 +1,9 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, 
     CardImg,
-    CardImgOverlay,
     
-    CardTitle,CardBody, CardHeader, Media } from 'reactstrap';
+    
+    CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function About(props) {
